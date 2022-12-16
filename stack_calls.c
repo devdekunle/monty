@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int val = 0;
+int val = -1;
 /**
 *push_stack - push a node onto the stack
 *@stack: pointer to linked list
@@ -9,6 +9,11 @@ int val = 0;
 void push_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
+	if (val == -1)
+	{
+		dprintf(2, "L%d: Usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	if (stack == NULL)
 	{
@@ -30,11 +35,11 @@ void push_stack(stack_t **stack, unsigned int line_number)
 	*stack = new_node;
 }
 
-void pop_stack(stack_t **stack, unsigned int line_number)
+/*void pop_stack(stack_t **stack, unsigned int line_number)
 {
 
 	printf("pop\n");
-}
+}*/
 
 /**
 *print_stack - prints all element on the stack
@@ -44,6 +49,12 @@ void pop_stack(stack_t **stack, unsigned int line_number)
 void print_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = NULL;
+
+	if (val == -1)
+	{
+		dprintf(2, "L%d: Usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	ptr = *stack;
 	while(ptr != NULL)
 	{

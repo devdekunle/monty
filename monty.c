@@ -19,9 +19,6 @@ int  main(int argc, char *argv[])
 	int line_number = 0;
 	ssize_t nread;
 	void (*f)(stack_t **stack, unsigned int line_number);
-    	stack_t *head;
-
-    	head = NULL;
 
 	if (argc != 2)
 	{
