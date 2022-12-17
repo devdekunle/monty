@@ -46,9 +46,9 @@ int  main(int argc, char *argv[])
 		if (token == NULL)
 			continue;
 		arg = strtok(NULL, " ");
-		global_t.arg = arg;
 		if (arg)
 		{
+			
 			i = 0;
 			while(arg[i])
 			{
@@ -62,6 +62,7 @@ int  main(int argc, char *argv[])
 				}
 				i++;
 			}
+			global_t.arg = arg;
 			global_t.val = atoi(arg);
 		}
 		else
