@@ -5,13 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-typedef struct global_var{
-
-	int val;
-	int ag;
-
-} global;
-extern global global_t;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -28,6 +21,17 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
+
+typedef struct global_var{
+
+	int val;
+	int ag;
+	char *ptr_line;
+	char *arg;
+	stack_t *ptr_node;
+} global;
+
+extern global global_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -53,4 +57,5 @@ int pop_dnodeint(stack_t **head);
 void print_stack_head(stack_t **stack, unsigned int line_number);
 void print_top_node(const stack_t *h);
 size_t len_dlistint(const stack_t *h);
+void free_list(stack_t *head);
 #endif /*MONTY_H*/
