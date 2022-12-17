@@ -1,66 +1,48 @@
 #include "monty.h"
+int val;
 
-int val = -1;
-/**
-*push_stack - push a node onto the stack
-*@stack: pointer to linked list
-*@line_number: line number
-*/
 void push_stack(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node;
-	if (val == -1)
+	if (val == 0)
 	{
-		dprintf(2, "L%d: Usage: push integer\n", line_number);
+		dprintf(2, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	if (stack == NULL)
-	{
-		exit(1);
-	}
-
-	new_node = malloc(sizeof(stack_t));
-
-	if (new_node == NULL)
-	{
-		exit(1);
-	}
-
-	new_node->n = val;
-	new_node->prev = NULL;
-	new_node->next = *stack;
-	if (*stack)
-		(*stack)->prev = new_node;
-	*stack = new_node;
+	add_dnodeint(stack, val);
 }
 
-/*void pop_stack(stack_t **stack, unsigned int line_number)
+void pop_stack(stack_t **stack, unsigned int line_number)
 {
-
-	printf("pop\n");
-}*/
-
-/**
-*print_stack - prints all element on the stack
-*@stack: pointer to linked list
-*@line_number: linke number
-*/
-void print_stack(stack_t **stack, unsigned int line_number)
-{
-	stack_t *ptr = NULL;
-
-	if (val == -1)
+	if (len_dlistint(*stack) == 0)
 	{
-		dprintf(2, "L%d: Usage: push integer\n", line_number);
+		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	ptr = *stack;
-	while(ptr != NULL)
+	pop_dnodeint(stack);
+}
+
+void print_stack(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	if (len_dlistint(*stack) == 0)
+		dprintf(1,"0\n");
+	print_dlistint(*stack);
+}
+
+
+void print_stack_head(stack_t **stack, unsigned int line_number)
+{
+	int k = 0;
+
+	if (len_dlistint(*stack) == 0)
 	{
-		printf("%d\n", ptr->n);
-		ptr = ptr->next;
-
+		dprintf(2, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
 	}
-
+	print_top_node(*stack);
+	if (val == 0)
+	{
+		dprintf(1, "%d\n", k);
+		return;
+	}
 }

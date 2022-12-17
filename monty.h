@@ -1,10 +1,10 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 extern int val;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -22,11 +22,10 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
- * @f: pointer to function to handle the opcode
+ * @f: function to handle the opcode
  *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
@@ -41,4 +40,10 @@ void (*get_stack_call(char *token))( stack_t **stack, unsigned int line_number);
 void push_stack(stack_t **stack, unsigned int line_number);
 void pop_stack(stack_t **stack, unsigned int line_number);
 void print_stack(stack_t **stack, unsigned int line_number);
+stack_t *add_dnodeint(stack_t **head, int n);
+void print_dlistint(const stack_t *h);
+int pop_dnodeint(stack_t **head);
+void print_stack_head(stack_t **stack, unsigned int line_number);
+void print_top_node(const stack_t *h);
+size_t len_dlistint(const stack_t *h);
 #endif /*MONTY_H*/
