@@ -35,6 +35,7 @@ int  main(int argc, char *argv[])
 
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
+		global_t.ag = 1;
 		line_number++;
 		if (strcmp(line, "\n") == 0)
 			continue;
@@ -43,9 +44,10 @@ int  main(int argc, char *argv[])
 		if (token == NULL)
 			continue;
 		arg = strtok(NULL, " ");
-
 		if (arg)
-			val = atoi(arg);
+			global_t.val = atoi(arg);
+		else
+			global_t.ag = 0;
 		f = get_stack_call(token);
 		if (f == NULL)
 		{
@@ -53,7 +55,7 @@ int  main(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 		f(&stack, line_number);
-
+		global_t.ag = 1;
 	}
 
 	free(line);

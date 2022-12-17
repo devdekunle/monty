@@ -1,14 +1,15 @@
 #include "monty.h"
-int val;
+global global_t;
+
 
 void push_stack(stack_t **stack, unsigned int line_number)
 {
-	if (val == 0)
+	if (global_t.ag == 0)
 	{
 		dprintf(2, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	add_dnodeint(stack, val);
+	add_dnodeint(stack, global_t.val);
 }
 
 void pop_stack(stack_t **stack, unsigned int line_number)
@@ -40,7 +41,7 @@ void print_stack_head(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	print_top_node(*stack);
-	if (val == 0)
+	if (global_t.ag == 0)
 	{
 		dprintf(1, "%d\n", k);
 		return;
