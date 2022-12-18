@@ -17,7 +17,6 @@ int  main(int argc, char *argv[])
 	char *token, *arg, *line = NULL;
 	size_t len = 0;
 	int	line_number = 0;
-	int i;
 	ssize_t nread;
 	void (*f)(stack_t **stack, unsigned int line_number);
 
@@ -49,19 +48,6 @@ int  main(int argc, char *argv[])
 		if (arg)
 		{
 			
-			i = 0;
-			while(arg[i])
-			{
-				if (!(48<=arg[i] && arg[i]<=57) && arg[i] != '-')
-				{
-					dprintf(2, "L%u: usage: push integer\n", line_number);
-					free_list(stack);
-					free(line);
-					exit(EXIT_FAILURE);
-					
-				}
-				i++;
-			}
 			global_t.arg = arg;
 			global_t.val = atoi(arg);
 		}
