@@ -76,3 +76,9 @@ void print_stack_head(stack_t **stack, unsigned int line_number)
 	}
 
 }
+void no_op(stack_t **stack, unsigned int line_number)
+{
+(void)stack;
+(void)line_number;
+return;
+}

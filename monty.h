@@ -58,4 +58,11 @@ void print_stack_head(stack_t **stack, unsigned int line_number);
 void print_top_node(const stack_t *h);
 size_t len_dlistint(const stack_t *h);
 void free_list(stack_t *head);
+void no_op(stack_t **stack, unsigned int line_number);
+void swap_nodes(stack_t **stack, unsigned int line_number);
+void add_nodes(stack_t **stack, unsigned int line_number);
+void sub_nodes(stack_t **stack, unsigned int line_number);
+void div_nodes(stack_t **stack, unsigned int line_number);
+void mul_nodes(stack_t **stack, unsigned int line_number);
+void mod_nodes(stack_t **stack, unsigned int line_number);
 #endif /*MONTY_H*/

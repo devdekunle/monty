@@ -44,6 +44,8 @@ int  main(int argc, char *argv[])
 		token = strtok(token, " ");
 		if (token == NULL)
 			continue;
+		if (token[0] == '#')
+			continue;
 		arg = strtok(NULL, " ");
 		if (arg)
 		{
