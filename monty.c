@@ -57,7 +57,6 @@ int  main(int argc, char *argv[])
 		if (f == NULL)
 		{
 			dprintf(2, "L%u: unknown instruction %s\n", line_number, token);
-			printf("1\n");
 			free(line);
 			free_list(stack);
 			exit(EXIT_FAILURE);
